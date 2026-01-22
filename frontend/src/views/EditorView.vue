@@ -9,15 +9,19 @@
 </template>
 
 <script setup>
+
 import { computed } from "vue"
 import { useStore } from "vuex"
 
 const store = useStore()
+
 const username = computed(() => store.state.user?.username || 'Guest')
+
 </script>
 
 <style scoped>
 .page {
+	
 	padding: 2rem;
 	min-height: 80vh;
 	display: flex;

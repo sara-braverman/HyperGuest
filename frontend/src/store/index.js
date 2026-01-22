@@ -30,6 +30,7 @@ export default createStore({
 			state.user = user
 			state.error = null
 		},
+
 		SET_LOGOUT(state) {
 			state.isLoggedIn = false
 			state.user = null
@@ -46,10 +47,10 @@ export default createStore({
 				commit('SET_LOGIN', response.data)
 				return { success: true }
 			} catch (error) {
-				let errorMessage = 'Login failed. Please try again.'
+				let errorMessage = 'Login failed'
 				
 				if (error.response?.status === 401) {
-					errorMessage = 'Account has been deleted or is unauthorized'
+					errorMessage = 'Account deleted or is unauthorized'
 				} else if (error.response?.data?.message) {
 					errorMessage = error.response.data.message
 				}
@@ -65,6 +66,5 @@ export default createStore({
 		}
 	},
 	modules: {
-		// Define your modules here
 	},
 })

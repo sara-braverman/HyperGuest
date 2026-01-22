@@ -11,11 +11,10 @@ export class UsersController {
     const user = await this.usersService.findByUsername(username);
 
     if (!user) {
-      throw new NotFoundException(`The user - ${username} - not found`);
+      throw new NotFoundException(`The user not found`);
     }
-
     if (user.status === UserStatus.DELETED) {
-      throw new UnauthorizedException('User account has been deleted');
+      throw new UnauthorizedException('user has been deleted');
     }
 
     return user;

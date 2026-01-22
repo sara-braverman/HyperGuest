@@ -2,8 +2,7 @@
 	<nav class="navbar">
 		<div class="nav-brand">HyperGuest</div>
 		<div class="nav-links">
-			<router-link v-if="!isLoggedIn" to="/" class="nav-btn">
-				Login
+			<router-link v-if="!isLoggedIn" to="/" class="nav-btn">Login
 			</router-link>
 			<router-link v-if="isLoggedIn" to="/home" class="nav-btn">
 				Home
@@ -11,7 +10,8 @@
 			<router-link v-if="hasAnyRole(['editor', 'admin'])" to="/editor" class="nav-btn">
 				Editor
 			</router-link>
-			<router-link v-if="hasAnyRole(['admin'])" to="/admin" class="nav-btn">
+
+			<router-link v-if="hasAnyRole(['admin'] )" to="/admin" class="nav-btn">
 				Admin
 			</router-link>
 			<button v-if="isLoggedIn" @click="handleLogout" class="logout-btn">
