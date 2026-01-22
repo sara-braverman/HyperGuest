@@ -1,19 +1,49 @@
 <template>
-	<div class="home">
-		<h1>Home Page</h1>
-		<p>Welcome {{ username }}!</p>
+	<div class="page">
+		<div class="content">
+			<h1>Welcome Home</h1>
+			<p>Hello, <strong>{{ username }}</strong>!</p>
+			<p class="description">You're successfully logged in to the HyperGuest platform.</p>
+		</div>
 	</div>
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { computed } from "vue"
+import { useStore } from "vuex"
 
-const username = ref("")
+const store = useStore()
+const username = computed(() => store.state.user?.username || 'Guest')
 </script>
 
 <style scoped>
-.home {
+.page {
 	padding: 2rem;
+	min-height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
 	text-align: center;
+	max-width: 500px;
+}
+
+.content h1 {
+	color: #1f2937;
+	margin-bottom: 1rem;
+	font-size: 2rem;
+}
+
+.content p {
+	color: #6b7280;
+	margin-bottom: 0.5rem;
+	font-size: 1.1rem;
+}
+
+.description {
+	font-size: 1rem;
+	margin-top: 1rem;
 }
 </style>

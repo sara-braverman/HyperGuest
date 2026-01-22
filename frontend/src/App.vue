@@ -2,30 +2,29 @@
 	<div>
 		<Navbar v-if="showNavbar" />
 		<router-view />
-		<button v-if="showNavbar" @click="handleLogout">Logout</button>
 	</div>
 </template>
 
 <script setup>
 import { computed } from "vue"
-import { useRoute, useRouter } from "vue-router"
+import { useRoute } from "vue-router"
 import Navbar from "./components/Navbar.vue"
 
 const route = useRoute()
-const router = useRouter()
 const showNavbar = computed(() => route.path !== "/")
-
-const handleLogout = () => {
-	router.push("/")
-}
 </script>
 
 <style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
 	color: #2c3e50;
 }
 
