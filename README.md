@@ -48,26 +48,26 @@
 
 ### User Role Management
 - Changed from single role to multiple roles per user
-- Database column changed from `role` to `roles` (JSON array)
-- Created migration `1680000000001-UpdateUserRolesToMultiple.ts` to convert existing data
-- Updated User entity for roles array
+- Database column changed from `role` to `roles`
+- Created migration to convert data
+- Updated entity for roles array
 - Added Vuex getters for role checking
 
 ### User Status Enhancement
-- Replaced boolean status with enum: Enabled, Disabled, Deleted
-- Created migration `1680000000002-UpdateUserStatusToEnum.ts` for conversion
+- Replaced boolean status with enum
+- Created migration for conversion
 - Added `UserStatus` enum in backend entity
 
 ### Authorization
-- Added check in users controller login endpoint for deleted users
+- Added check in login endpoint for deleted users
 - Returns HTTP 401 with `UnauthorizedException` for deleted accounts
-- Frontend catches 401 errors and displays appropriate message
+- Frontend catches errors and displays appropriate message
 
 ### State Management
-- Moved all HTTP requests from components to Vuex actions
+- Moved all HTTP requests to Vuex actions
 - Created centralized login action with error handling
 - Added loading and error state mutations
-- Implemented role-based getters for permission checking
+- Implemented getters for permission checking
 
 ### Route Protection
 - Added `beforeEach` guard in Vue Router
@@ -75,9 +75,10 @@
 - Redirects unauthorized users to login or home page
 
 ### User Interface
-- Created modern navbar with full-width
+- Change navbar style 
 - Shows all page titles but disables unauthorized ones in gray
-- Displays username from Vuex store on all pages
+- Displays username from vuex store on all pages
+- delete no needed duplicated button
 
 ## Suggested Improvements
 
@@ -88,7 +89,6 @@
 ### Frontend
 - Should use TypeScript support
 - Implement form validation
-- Add loading 
 - Add sign in option 
 
 ### Architecture
