@@ -4,16 +4,37 @@
 		<div class="nav-links">
 			<router-link v-if="!isLoggedIn" to="/" class="nav-btn">Login
 			</router-link>
-			<router-link v-if="isLoggedIn" to="/home" class="nav-btn">
-				Home
-			</router-link>
-			<router-link v-if="hasAnyRole(['editor', 'admin'])" to="/editor" class="nav-btn">
-				Editor
-			</router-link>
-
-			<router-link v-if="hasAnyRole(['admin'] )" to="/admin" class="nav-btn">
-				Admin
-			</router-link>
+			<template v-if="isLoggedIn">
+				<router-link to="/home" class="nav-btn">
+					Home
+				</router-link>
+				<router-link 
+					v-if="hasAnyRole(['editor', 'admin'])" 
+					to="/editor" 
+					class="nav-btn"
+				>
+					Editor
+				</router-link>
+				<span 
+					v-else 
+					class="nav-btn disabled"
+				>
+					Editor
+				</span>
+				<router-link 
+					v-if="hasAnyRole(['admin'])" 
+					to="/admin" 
+					class="nav-btn"
+				>
+					Admin
+				</router-link>
+				<span 
+					v-else 
+					class="nav-btn disabled"
+				>
+					Admin
+				</span>
+			</template>
 			<button v-if="isLoggedIn" @click="handleLogout" class="logout-btn">
 				Logout
 			</button>
@@ -83,6 +104,17 @@ export default {
 .nav-btn.router-link-active {
 	background: #10b981;
 	color: white;
+}
+
+.nav-btn.disabled {
+	color: #9ca3af;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.nav-btn.disabled:hover {
+	background: transparent;
+	color: #9ca3af;
 }
 
 .logout-btn {
